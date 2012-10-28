@@ -252,3 +252,9 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^"([^"]*)" table should have (\d+) rows$/ do |table, row_count|
+  row_count = row_count.to_i
+  assert row_count == page.all( "\##{table} tr" ).count
+end
+
